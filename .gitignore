@@ -29,6 +29,8 @@ var/
 *.manifest
 *.spec
 
+#mlflow
+mlruns/
 # Installer logs
 pip-log.txt
 pip-delete-this-directory.txt
@@ -57,7 +59,10 @@ docs/_build/
 target/
 
 # DotEnv configuration
+.venv
 .env
+#pytest
+.pytest_cache/
 
 # Database
 *.db
