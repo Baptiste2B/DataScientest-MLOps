@@ -28,6 +28,9 @@ jobs:
         pip install -r requirements.txt
         pip install pytest requests
 
+    - name: 📥 Récupérer les fichiers DVC (modèles)
+      run: dvc pull
+
     - name: ✅ Lancer les tests unitaires
       run: pytest
 
