@@ -42,12 +42,15 @@ jobs:
 
     - name: 🚀 Run Docker container
       run: |
-        docker run --rm -d -p 8000:8000 --name fastapi_container fastapi-app
-        sleep 10
+        docker run --rm -d --name fastapi_container --network=host fastapi-app
+        sleep 25
+
+    - name: 🐳 Vérification Docker
+      run: docker ps -a
 
     - name: 🧪 Test FastAPI container (curl)
       run: |
         curl --fail -X POST http://localhost:8000/predict/multiclass \
-        -H "Content-Type: application/json" \
-        -d '{"text": "Ceci est un test"}' \
-        || (docker logs fastapi_container && exit 1)
+          -H "Content-Type: application/json" \
+          -d '{"text": "Ceci est un test"}' \
+        || (docker logs fastapi_container || echo "⚠️ Container inaccessible" && exit 1)
