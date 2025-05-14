@@ -27,6 +27,9 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
         pip install pytest requests
+      
+    - name: 📚 Télécharger les données TextBlob (corpora)
+      run: python -m textblob.download_corpora
 
     # - name: 📥 Récupérer les fichiers DVC (modèles)
     #   run: dvc pull
