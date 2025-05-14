@@ -27,12 +27,9 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
         pip install pytest requests
-      
+
     - name: 📚 Télécharger les données TextBlob (corpora)
       run: python -m textblob.download_corpora
-
-    # - name: 📥 Récupérer les fichiers DVC (modèles)
-    #   run: dvc pull
 
     - name: ✅ Lancer les tests unitaires
       run: pytest
@@ -42,15 +39,19 @@ jobs:
 
     - name: 🚀 Run Docker container
       run: |
-        docker run --rm -d --name fastapi_container --network=host fastapi-app
+        docker run -d --name fastapi_container --network=host fastapi-app
         sleep 25
 
     - name: 🐳 Vérification Docker
       run: docker ps -a
+
+    - name: 📄 Logs Docker (si échec)
+      if: failure()
+      run: docker logs fastapi_container || echo "⚠️ Aucun log trouvé"
 
     - name: 🧪 Test FastAPI container (curl)
       run: |
         curl --fail -X POST http://localhost:8000/predict/multiclass \
           -H "Content-Type: application/json" \
           -d '{"text": "Ceci est un test"}' \
-        || (docker logs fastapi_container || echo "⚠️ Container inaccessible" && exit 1)
+        || (docker logs fastapi_container && exit 1)
