@@ -35,7 +35,7 @@ jobs:
       run: pytest
 
     - name: 🐳 Build de l'image Docker
-      run: docker build -t fastapi-app -f Dockerfile .
+      run: docker build -t fastapi-app -f src/Dockerfile .
 
     - name: 🚀 Run Docker container
       run: |
@@ -46,7 +46,7 @@ jobs:
       run: docker ps -a
 
     - name: 📄 Logs Docker (si échec)
-      if: always()
+      if: failure()
       run: docker logs fastapi_container || echo "⚠️ Aucun log trouvé"
 
     - name: 🧪 Test FastAPI container (curl)
