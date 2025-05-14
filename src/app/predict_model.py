@@ -58,7 +58,7 @@ def predict_binary(df, model=binary):
             predictions = model.predict(data)
             mlflow.log_param("model_type", "binary_xgboost")
             mlflow.log_metric("num_samples", len(data))
-            mlflow.log_artifact("app/models/xgboost_model_binary.pkl")
+            mlflow.log_artifact("src/app/models/xgboost_model_binary.pkl")
             print(predictions)
             return predictions
     except Exception as e:
@@ -82,7 +82,7 @@ def predict_multiclass(data, model=multiclass):
             predictions = model.predict(data)
             mlflow.log_param("model_type", "multiclass_xgboost")
             mlflow.log_metric("num_samples", len(data))
-            mlflow.log_artifact("app/models/xgboost_model_multiclass.pkl")
+            mlflow.log_artifact("src/app/models/xgboost_model_multiclass.pkl")
             return predictions
     except Exception as e:
         print(f"An error occurred during prediction: {e}")
