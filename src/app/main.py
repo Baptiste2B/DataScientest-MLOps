@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 import pandas as pd
-from app.predict_model import predict_binary as pb, predict_multiclass as pm
+from .predict_model import predict_binary as pb, predict_multiclass as pm
 
 app = FastAPI()
 
