@@ -16,8 +16,8 @@ import mlflow.xgboost
 ##############################################
 # Functions
 ##############################################
-
-mlflow.set_tracking_uri("https://mlflow-server-y26m.onrender.com")
+if not os.getenv("PYTEST_RUNNING"):
+    mlflow.set_tracking_uri("https://mlflow-server-y26m.onrender.com")
 
 def load_model(model_path):
     try:
