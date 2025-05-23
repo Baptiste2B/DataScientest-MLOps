@@ -17,6 +17,8 @@ import mlflow.xgboost
 # Functions
 ##############################################
 
+mlflow.set_tracking_uri("https://mlflow-server-y26m.onrender.com")
+
 def load_model(model_path):
     try:
         current_dir = os.path.dirname(os.path.abspath(__file__))

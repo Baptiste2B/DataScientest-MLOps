@@ -40,7 +40,7 @@ jobs:
     - name: 🚀 Run Docker container
       run: |
         docker run -d --name fastapi_container --network=host fastapi-app
-        sleep 25
+        sleep 10
 
     - name: 🐳 Vérification Docker
       run: docker ps -a
