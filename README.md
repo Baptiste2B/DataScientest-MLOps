@@ -1,6 +1,6 @@
-# Project Name - MLOps Movie Recommendation System
+# Project Name - MLOps Trustpilot sentiment analysis System
 
-This project is a starter pack for a complete **MLOps pipeline**, based on a movie recommendation system. It is designed to demonstrate best practices in development, versioning, containerization, CI/CD, and production deployment.
+This project is a starter pack for a complete **MLOps pipeline**, based on a movie Trustpilot sentiment analysis System. It is designed to demonstrate best practices in development, versioning, containerization, CI/CD, and production deployment.
 
 ## 🎯 Objectives
 
